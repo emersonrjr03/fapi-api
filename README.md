@@ -11,6 +11,7 @@ It's possible create a GET request to the FAPI like the following:<br/>
 OR with ID in the path:<br/>
 ```fapi.com.br/USER_TOKEN/RESOURCE/{ID}```<br/>
 
+**```GET```** ```fapi.com.br``` _/ ```1239hh89bui39h9b19opa```_ _/ ```product```_ _/ ```1000032```_
 ```**GET** fapi.com.br/1239hh89bui39h9b19opa/_product_/1000032```
 
 Even POST requests will be allowed, and the created rules for that resource will be applied on the given JSON.
