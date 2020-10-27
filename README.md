@@ -17,9 +17,9 @@ For example, using the same 'product' resource, the user added the following rul
 
 RESOURCE.FIELD CONDITION VALUE OTHERWISE JSON_RETURN_
 
-| RESOURCE      | . | FIELD         | CONDITION       | VALUE         | OTHERWISE     | JSON_RETURN   |
-| ------------- | - | ------------- | --------------- | ------------- | ------------- |:-------------:|
-| ```'product'```     | . | ```'price'```       | **```BIGGER THAN```** | ```0```             | OTHERWISE     | ```json { status: 400, field: 'price', error: 'Price must be bigger than zero!' }``` |
+| RESOURCE      | . | FIELD         | CONDITION           | VALUE         | OTHERWISE     | JSON_RETURN   |
+| ------------- | - | ------------- | ------------------- | ------------- | ------------- |:-------------:|
+| ```'product'``` | . | ```'price'```       | **```BIGGER THAN```** | ```0```             | OTHERWISE     | ```json { status: 400, field: 'price', error: 'Price must be bigger than zero!' }``` |
 
 When requesting a POST:
 
