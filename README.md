@@ -6,7 +6,7 @@ The user can create an account, and create projects that have resources and its 
 It's possible create a GET request to the FAPI like the following:<br/>
 ```fapi.com.br/USER_TOKEN/RESOURCE```
 
-**```GET```** ```fapi.com.br/1239hh89bui39h9b19opa/```_```product```_
+**```GET```** ```fapi.com.br```_/```1239hh89bui39h9b19opa```_ _/```product```_
 
 OR with ID in the path:<br/>
 ```fapi.com.br/USER_TOKEN/RESOURCE/{ID}```<br/>
