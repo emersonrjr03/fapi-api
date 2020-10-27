@@ -17,7 +17,7 @@ Even POST requests will be allowed, and the created rules for that resource will
 
 For example, using the same 'product' resource, the user added the following rule:
 
-```RESOURCE```*.*```FIELD``` ```CONDITION``` ```VALUE``` **OTHERWISE** ```JSON_RETURN```
+```RESOURCE```**.**```FIELD``` ```CONDITION``` ```VALUE``` **OTHERWISE** ```JSON_RETURN```
 
 | RESOURCE      | . | FIELD         | CONDITION           | VALUE         | OTHERWISE     | JSON_RETURN   |
 | ------------- | - | ------------- | ------------------- | ------------- | ------------- |:-------------:|
