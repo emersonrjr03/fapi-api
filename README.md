@@ -25,7 +25,7 @@ When requesting a POST:
 
 POST fapi.com.br/1239hh89bui39h9b19opa/product
 Body content:
-```json
+```javascript
 {
   id: 1000033,
   description: 'Blue Ball',
@@ -35,7 +35,7 @@ Body content:
 
 The response will be:
 
-```json
+```javascript
 
 RESPONSE CODE: 400
 {
