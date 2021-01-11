@@ -1,6 +1,6 @@
 # fapi-api
 FAPI api.
-FAPI is an application that you give to frontend developers the possibility of start working without having to wait for the backend API to be ready.
+FAPI is an application that gives the frontend developers the possibility of start working without having to wait for the backend API to be ready.
 The user can create an account, and create projects that have resources and its rules, and even add fake data to those resources using the FAPI interface. 
 
 It's possible create a GET request to the FAPI like the following:<br/>
