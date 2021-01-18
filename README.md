@@ -46,3 +46,10 @@ RESPONSE CODE: 400
   error: 'Price must be bigger than zero!'
 }
 ```
+
+Get ideas and inspirations from:
+
+​ https://designer.mocky.io/design
+
+​ https://getsandbox.com/
+
