@@ -1,6 +1,5 @@
 package com.herms.service;
 
-import com.herms.entity.ResourceAttributeEntity;
 import com.herms.entity.ResourceEntity;
 import com.herms.mapper.ResourceMapper;
 import com.herms.model.Resource;
@@ -11,7 +10,6 @@ import io.quarkus.panache.common.Page;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
-import javax.ws.rs.BeanParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -55,7 +53,7 @@ public class ResourceService {
 
         ResourceEntity modifications = ResourceMapper.fromModel(model);
         entity.setName(model.getName());
-        entity.setAttributesList(modifications.getAttributesList());
+        entity.setAttributesMap(modifications.getAttributesMap());
         return Response.ok(ResourceMapper.toModel(entity)).build();
     }
 

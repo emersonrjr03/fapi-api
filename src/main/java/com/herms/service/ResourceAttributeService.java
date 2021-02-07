@@ -1,16 +1,11 @@
 package com.herms.service;
 
 import com.herms.entity.ResourceAttributeEntity;
-import com.herms.entity.ResourceEntity;
-import com.herms.enums.FieldType;
 import com.herms.mapper.ResourceAttributeMapper;
-import com.herms.mapper.ResourceMapper;
-import com.herms.mapper.UserMapper;
-import com.herms.model.Resource;
 import com.herms.model.ResourceAttribute;
+import com.herms.model.ResourceRow;
 import com.herms.pages.PageRequest;
 import com.herms.repository.ResourceAttributeRepository;
-import com.herms.repository.ResourceRepository;
 import io.quarkus.panache.common.Page;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -18,9 +13,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
@@ -61,14 +54,15 @@ public class ResourceAttributeService {
             throw new WebApplicationException("Resource Attribute not found!", Response.Status.NOT_FOUND);
 
         ResourceAttributeEntity modifications = ResourceAttributeMapper.fromModel(model);
+
+
+
+        resourceRowValueService.updateFieldValuesIfNeeded(entity, modifications);
+
         entity.setFieldName(modifications.getFieldName());
+        entity.setFieldFormat(modifications.getFieldFormat());
         entity.setFieldType(modifications.getFieldType());
 
-        if(!(entity.getFieldFormat() + "").equals(modifications.getFieldFormat())) {
-            resourceRowValueService.updateFieldValuesToNewFormat(entity, modifications.getFieldFormat());
-
-            entity.setFieldFormat(modifications.getFieldFormat());
-        }
 
         return Response.ok(ResourceAttributeMapper.toModel(entity)).build();
     }

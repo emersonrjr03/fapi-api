@@ -1,12 +1,11 @@
 package com.herms.entity;
 
+import com.herms.converter.BooleanToStringConverter;
 import com.herms.converter.FieldTypeConverter;
 import com.herms.enums.FieldType;
-import com.herms.model.Resource;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "RESOURCE_ATTRIBUTE")
@@ -20,17 +19,27 @@ public class ResourceAttributeEntity {
     @Convert(converter = FieldTypeConverter.class)
     private FieldType fieldType;
     private String fieldFormat;
+    @Convert(converter= BooleanToStringConverter.class)
+    @Column(name="IS_PRIMARY_KEY", length=1)
+    private Boolean fieldIsPk;
+    @OneToMany(mappedBy = "resourceAttribute")
+    private List<AttributeValidationEntity> validationList;
 
 
     public ResourceAttributeEntity() {
     }
 
-    public ResourceAttributeEntity(Long id, ResourceEntity resource, String fieldName, FieldType fieldType, String fieldFormat) {
+    public ResourceAttributeEntity(Long id) {
         this.id = id;
+    }
+
+    public ResourceAttributeEntity(Long id, ResourceEntity resource, String fieldName, FieldType fieldType, String fieldFormat, Boolean fieldIsPk) {
+        this(id);
         this.resource = resource;
         this.fieldName = fieldName;
         this.fieldType = fieldType;
         this.fieldFormat = fieldFormat;
+        this.fieldIsPk = fieldIsPk;
 
     }
 
@@ -72,5 +81,13 @@ public class ResourceAttributeEntity {
 
     public void setFieldFormat(String fieldFormat) {
         this.fieldFormat = fieldFormat;
+    }
+
+    public Boolean getFieldIsPk() {
+        return fieldIsPk;
+    }
+
+    public void setFieldIsPk(Boolean fieldIsPk) {
+        this.fieldIsPk = fieldIsPk;
     }
 }

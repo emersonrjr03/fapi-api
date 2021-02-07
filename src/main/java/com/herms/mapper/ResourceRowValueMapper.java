@@ -4,7 +4,9 @@ import com.herms.entity.ResourceRowEntity;
 import com.herms.entity.ResourceRowValueEntity;
 import com.herms.model.ResourceRowValue;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ResourceRowValueMapper {
@@ -32,5 +34,18 @@ public class ResourceRowValueMapper {
                                                     model.getValue(),
                 model.getRowId() != null ? new ResourceRowEntity(model.getRowId()) : null);
         return entity;
+    }
+
+    public static List<ResourceRowValue> toModel(Map<String, Object> row) {
+        List<ResourceRowValue> rowValueList = new ArrayList<>();
+        for(Map.Entry<String, Object> entry : row.entrySet()) {
+            ResourceRowValue model = new ResourceRowValue(
+                    null,
+                    entry.getKey(),
+                    String.valueOf(entry.getValue()),
+                    null);
+            rowValueList.add(model);
+        }
+        return rowValueList;
     }
 }

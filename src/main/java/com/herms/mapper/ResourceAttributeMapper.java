@@ -6,16 +6,17 @@ import com.herms.model.Resource;
 import com.herms.model.ResourceAttribute;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ResourceAttributeMapper {
 
-    public static List<ResourceAttribute> toModel(List<ResourceAttributeEntity> entityList){
-        return entityList.stream().map(ResourceAttributeMapper::toModel).collect(Collectors.toList());
+    public static Map<String, ResourceAttribute> toModel(Map<String, ResourceAttributeEntity> entityMap){
+        return entityMap.values().stream().map(ResourceAttributeMapper::toModel).collect(Collectors.toMap(model -> model.getFieldName(), model -> model));
     }
 
-    public static List<ResourceAttributeEntity> fromModel(List<ResourceAttribute> modelList) {
-        return modelList.stream().map(ResourceAttributeMapper::fromModel).collect(Collectors.toList());
+    public static Map<String, ResourceAttributeEntity> fromModel(Map<String, ResourceAttribute> modelMap) {
+        return modelMap.values().stream().map(ResourceAttributeMapper::fromModel).collect(Collectors.toMap(entity -> entity.getFieldName(), entity -> entity));
     }
 
     public static ResourceAttribute toModel(ResourceAttributeEntity entity){
@@ -24,7 +25,8 @@ public class ResourceAttributeMapper {
                 entity.getResource().getId(),
                 entity.getFieldName(),
                 entity.getFieldType(),
-                entity.getFieldFormat());
+                entity.getFieldFormat(),
+                entity.getFieldIsPk());
 
         return model;
     }
@@ -34,7 +36,8 @@ public class ResourceAttributeMapper {
                 new ResourceEntity(model.getResourceId()),
                 model.getFieldName(),
                 model.getFieldType(),
-                model.getFieldFormat());
+                model.getFieldFormat(),
+                model.getFieldIsPk());
         return entity;
     }
 }

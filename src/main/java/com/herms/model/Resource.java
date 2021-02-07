@@ -1,25 +1,22 @@
 package com.herms.model;
 
-import com.herms.entity.ResourceAttributeEntity;
-import com.herms.entity.UserEntity;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Resource {
     private Long id;
     private String name;
-    private List<ResourceAttribute> attributesList;
+    private Map<String, ResourceAttribute> attributesMap;
     private User createdBy;
 
     public Resource() {
-        attributesList = new ArrayList<>();
+        attributesMap = new HashMap<>();
     }
 
-    public Resource(Long id, String name, List<ResourceAttribute> attributesList, User createdBy) {
+    public Resource(Long id, String name, Map<String, ResourceAttribute> attributesMap, User createdBy) {
         this.id = id;
         this.name = name;
-        this.attributesList = attributesList;
+        this.attributesMap = attributesMap;
         this.createdBy = createdBy;
     }
 
@@ -39,12 +36,12 @@ public class Resource {
         this.name = name;
     }
 
-    public List<ResourceAttribute> getAttributesList() {
-        return attributesList;
+    public Map<String, ResourceAttribute> getAttributesMap() {
+        return attributesMap;
     }
 
-    public void setAttributesList(List<ResourceAttribute> attributesList) {
-        this.attributesList = attributesList;
+    public void setAttributesMap(Map<String, ResourceAttribute> attributesMap) {
+        this.attributesMap = attributesMap;
     }
 
     public User getCreatedBy() {

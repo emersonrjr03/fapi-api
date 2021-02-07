@@ -1,7 +1,6 @@
 package com.herms.mapper;
 
 import com.herms.entity.ResourceEntity;
-import com.herms.entity.UserEntity;
 import com.herms.model.Resource;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class ResourceMapper {
     public static Resource toModel(ResourceEntity entity){
         Resource model = new Resource(entity.getId(),
                 entity.getName(),
-                ResourceAttributeMapper.toModel(entity.getAttributesList()),
+                ResourceAttributeMapper.toModel(entity.getAttributesMap()),
                 UserMapper.toModel(entity.getCreatedBy()));
 
         return model;
@@ -27,7 +26,7 @@ public class ResourceMapper {
     public static ResourceEntity fromModel(Resource model){
         ResourceEntity entity = new ResourceEntity(model.getId(),
                 model.getName(),
-                ResourceAttributeMapper.fromModel(model.getAttributesList()),
+                ResourceAttributeMapper.fromModel(model.getAttributesMap()),
                 UserMapper.fromModel(model.getCreatedBy()));
         return entity;
     }

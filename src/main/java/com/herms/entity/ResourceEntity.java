@@ -1,11 +1,8 @@
 package com.herms.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Table(name = "RESOURCE")
@@ -16,22 +13,23 @@ public class ResourceEntity {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "resource")
-    private List<ResourceAttributeEntity> attributesList;
+    @MapKey(name = "fieldName")
+    private Map<String, ResourceAttributeEntity> attributesMap;
     @ManyToOne
     private UserEntity createdBy;
 
     public ResourceEntity() {
-        attributesList = new ArrayList<>();
+        attributesMap = new HashMap<>();
     }
     public ResourceEntity(Long id) {
         this();
         this.id = id;
     }
 
-    public ResourceEntity(Long id, String name, List<ResourceAttributeEntity> attributesList, UserEntity createdBy) {
+    public ResourceEntity(Long id, String name, Map<String, ResourceAttributeEntity> attributesMap, UserEntity createdBy) {
         this(id);
         this.name = name;
-        this.attributesList = attributesList;
+        this.attributesMap = attributesMap;
         this.createdBy = createdBy;
     }
 
@@ -51,12 +49,12 @@ public class ResourceEntity {
         this.name = name;
     }
 
-    public List<ResourceAttributeEntity> getAttributesList() {
-        return attributesList;
+    public Map<String, ResourceAttributeEntity> getAttributesMap() {
+        return attributesMap;
     }
 
-    public void setAttributesList(List<ResourceAttributeEntity> attributesList) {
-        this.attributesList = attributesList;
+    public void setAttributesMap(Map<String, ResourceAttributeEntity> attributesMap) {
+        this.attributesMap = attributesMap;
     }
 
     public UserEntity getCreatedBy() {

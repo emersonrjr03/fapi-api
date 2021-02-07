@@ -2,24 +2,24 @@ package com.herms.model;
 
 import com.herms.enums.FieldType;
 
-import java.io.Serializable;
-
 public class ResourceAttribute {
     private Long id;
     private Long resourceId;
     private String fieldName;
     private FieldType fieldType;
     private String fieldFormat;
+    private Boolean fieldIsPk;
 
     public ResourceAttribute() {
     }
 
-    public ResourceAttribute(Long id, Long resourceId, String fieldName, FieldType fieldType, String fieldFormat) {
+    public ResourceAttribute(Long id, Long resourceId, String fieldName, FieldType fieldType, String fieldFormat, Boolean fieldIsPk) {
         this.id = id;
         this.resourceId = resourceId;
         this.fieldName = fieldName;
         this.fieldType = fieldType;
         this.fieldFormat = fieldFormat;
+        this.fieldIsPk = fieldIsPk;
     }
 
     public Long getId() {
@@ -60,5 +60,13 @@ public class ResourceAttribute {
 
     public void setFieldFormat(String fieldFormat) {
         this.fieldFormat = fieldFormat;
+    }
+
+    public Boolean getFieldIsPk() {
+        return fieldIsPk;
+    }
+
+    public void setFieldIsPk(Boolean PK) {
+        fieldIsPk = PK;
     }
 }
